@@ -6,4 +6,4 @@
 void apply_hadamard_gate(Qubit* qb);
 void apply_pauli_x_gate(Qubit* qb);
 
-#endif // GATE_
+#endif // GATE_H
