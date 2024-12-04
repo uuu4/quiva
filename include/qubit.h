@@ -1,16 +1,20 @@
-// qubit.h
-
 #ifndef QUBIT_H
 #define QUBIT_H
+#include <stdbool.h>
 
+// Qubit structure definition
 typedef struct {
-    double amplitude0;
-    double amplitude1;
+    double real[2];
+    double imag[2];
 } Qubit;
 
-void init_qubit(Qubit* qb); // create qubit and set amplitudes to 0
-void print_qubit(Qubit* qb); // print qubit amplitudes
-int measure_qubit(Qubit* qb); // measure qubit and return 0 or 1
+// Function declarations
 
+void init_qubit(Qubit* qb); // Initializes a qubit to |0⟩
+void init_custom_qubit(Qubit* qb, double real0, double imag0, double real1, double imag1);
+void print_qubit(const Qubit* qb);
+void normalize_qubit(Qubit* qb);
+int measure_qubit(Qubit* qb);
+bool validate_qubit(const Qubit* qb);
 
-#endif // QUBIT_H
+#endif
