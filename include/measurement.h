@@ -4,5 +4,9 @@
 
 #ifndef MEASUREMENT_H
 #define MEASUREMENT_H
+#include "qubit.h"
+
+
+int measure_qubit(Qubit* qb);
 
 #endif //MEASUREMENT_H

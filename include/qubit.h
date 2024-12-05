@@ -14,7 +14,6 @@ void init_qubit(Qubit* qb); // Initializes a qubit to |0⟩
 void init_custom_qubit(Qubit* qb, double real0, double imag0, double real1, double imag1);
 void print_qubit(const Qubit* qb);
 void normalize_qubit(Qubit* qb);
-int measure_qubit(Qubit* qb);
 bool validate_qubit(const Qubit* qb);
 
 #endif
