@@ -8,7 +8,6 @@ typedef struct {
     double imag[2];
 } Qubit;
 
-// Function declarations
 
 void init_qubit(Qubit* qb); // Initializes a qubit to |0⟩
 void init_custom_qubit(Qubit* qb, double real0, double imag0, double real1, double imag1);
