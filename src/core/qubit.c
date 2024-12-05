@@ -21,8 +21,20 @@ void print_qubit(const Qubit* qb){
 }
 
 void normalize_qubit(Qubit* qb){
-  
-
+  double magnitude = sqrt(pow(qb->real[0], 2) + pow(qb->imag[0], 2) + pow(qb->real[1], 2) + pow(qb->imag[1], 2));
+  double epsilon = 1e-9; // Tolerance for floating-point comparison
+  if (fabs(magnitude) < epsilon) {
+    init_qubit(qb);
+    return;
+  }
+  if (fabs(magnitude - 1) < epsilon) {
+    printf("Qubit is already normalized.\n");
+    return;
+  }
+    qb->real[0] = qb->real[0]/magnitude;
+    qb->real[1] = qb->real[1]/magnitude;
+    qb->imag[0] = qb->imag[0]/magnitude;
+    qb->imag[1] = qb->imag[1]/magnitude;
 }
 
 bool validate_qubit(const Qubit* qb) {
