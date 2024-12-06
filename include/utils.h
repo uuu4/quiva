@@ -3,11 +3,9 @@
 
 #include <stdbool.h>
 #include "qubit.h"
-#include <math.h>
-
 
 //random number generator
-void generate_random_number();
+double generate_random_number();
 
 
 //math utils

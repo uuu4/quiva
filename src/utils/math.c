@@ -30,3 +30,7 @@ void free_matrix(double** matrix, int rows) {
     }
     free(matrix);
 }
+
+double generate_random_number() {
+    return (double)rand() / (double)RAND_MAX;
+}
