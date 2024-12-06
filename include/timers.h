@@ -12,9 +12,7 @@ typedef struct Timer {
 } Timer;
 
 
-//time tracking(for performance testing)
 void start_timer();
 double stop_timer();
-
 void log_timer_duration(Timer* timer, const char* label);
 #endif //TIMERS_H
