@@ -11,8 +11,9 @@ void generate_random_number();
 
 
 //math utils
-void matrix_multiply(double* result, const double*mat1,const double*mat2, int row1,int col1,int row2,int col2);
 double dot_product(const double* vec1, const double* vec2, int length);
+double** matrix_multiply(const double* m1[], const double* m2[], int r1, int c1, int r2, int c2);
+void free_matrix(double** matrix, int rows);
 
 //angle conversion
 double degrees_to_radians(double degrees);
