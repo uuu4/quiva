@@ -6,6 +6,15 @@
 
 //random utils
 double generate_random_number();
+void init_random_seed();
+Qubit* generate_random_qubit();
+void random_complex_number(double* real, double* imag);
+void random_matrix(double** matrix, int rows, int cols); // matrix range: [-1, 1]
+int random_int(int min, int max);
+double random_double(double min, double max);
+void random_spherical_vector(double* r, double* theta, double* phi);
+
+
 
 
 //math utils
