@@ -20,6 +20,7 @@ double radians_to_degrees(double radians);
 //config handling
 void load_config(const char* config_file);
 void print_config();
+void save_config(const char* config_file);
 
 //time tracking(for performance testing)
 void start_timer();

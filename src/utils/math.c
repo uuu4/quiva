@@ -42,3 +42,5 @@ double radians_to_degrees(double radians) {
 double degrees_to_radians(double degrees) {
     return degrees * 3.14159265358979323846 / 180;
 }
+
+// dot product kaldi BURDA SADECE
