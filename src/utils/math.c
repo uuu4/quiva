@@ -42,5 +42,15 @@ double radians_to_degrees(double radians) {
 double degrees_to_radians(double degrees) {
     return degrees * 3.14159265358979323846 / 180;
 }
-
-// dot product kaldi BURDA SADECE
+double** transpose_matrix(const double* matrix[], int rows, int cols) {
+    double** result = (double**)malloc(cols * sizeof(double*));
+    for (int i = 0; i < cols; i++) {
+        result[i] = (double*)malloc(rows * sizeof(double));
+    }
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            result[j][i] = matrix[i][j];
+        }
+    }
+    return result;
+}

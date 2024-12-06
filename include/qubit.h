@@ -14,5 +14,6 @@ void init_custom_qubit(Qubit* qb, double real0, double imag0, double real1, doub
 void print_qubit(const Qubit* qb);
 void normalize_qubit(Qubit* qb);
 bool validate_qubit(const Qubit* qb);
+void calculate_bloch_coordinates(const Qubit* qb, double* theta, double* phi);
 
 #endif

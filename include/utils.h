@@ -12,6 +12,7 @@ double generate_random_number();
 double dot_product(const double* vec1, const double* vec2, int length);
 double** matrix_multiply(const double* m1[], const double* m2[], int r1, int c1, int r2, int c2);
 void free_matrix(double** matrix, int rows);
+double** transpose_matrix(const double* matrix[], int rows, int cols);
 
 //angle conversion
 double degrees_to_radians(double degrees);
