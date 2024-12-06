@@ -20,6 +20,8 @@ double radians_to_degrees(double radians);
 
 //config handling
 void load_config(const char* config_file);
+void export_config(const Config* config, const char* filename);
+void reset_config(Config* config);
 void print_config();
 void save_config(const char* config_file);
 #endif
