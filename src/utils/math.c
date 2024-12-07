@@ -31,10 +31,6 @@ void free_matrix(double** matrix, int rows) {
     free(matrix);
 }
 
-double generate_random_number() {
-    return (double)rand() / (double)RAND_MAX;
-}
-
 double radians_to_degrees(double radians) {
     return radians * 180 / 3.14159265358979323846;
 }
