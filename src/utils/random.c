@@ -20,3 +20,7 @@ double** random_matrix(double** matrix, int rows, int cols) {
     }
     return matrix;
 }
+void random_complex_number(double* real, double* imag) {
+    *real = generate_random_number();
+    *imag = generate_random_number();
+}
