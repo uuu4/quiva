@@ -12,3 +12,11 @@ double random_double(double min, double max) {
 void init_random_seed() {
     srand(time(NULL));
 }
+double** random_matrix(double** matrix, int rows, int cols) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            matrix[i][j] = random_double(-1, 1);
+        }
+    }
+    return matrix;
+}
