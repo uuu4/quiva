@@ -19,7 +19,7 @@ void load_visualization_state(const char* filename);
 void enable_interactive_controls();
 void clear_plot();
 void refresh_plot();
-void close_plot();    
+void close_plot();
 
 
 #endif //VISUALIZATION_H
