@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <time.h>
+#include "qubit.h"
 double generate_random_number() {
     return (double)rand() / (double)RAND_MAX;
 }
@@ -23,4 +24,9 @@ double** random_matrix(double** matrix, int rows, int cols) {
 void random_complex_number(double* real, double* imag) {
     *real = generate_random_number();
     *imag = generate_random_number();
+}
+Qubit* generate_random_qubit(){
+    Qubit* qubit = (Qubit*)malloc(sizeof(Qubit));
+    random_complex_number(qubit->real,qubit->imag);
+    return qubit;
 }
