@@ -50,3 +50,10 @@ double** transpose_matrix(const double* matrix[], int rows, int cols) {
     }
     return result;
 }
+double* dot_product(const double* vec1, const double* vec2, int length){
+  double* result;
+  for(int i=0;i<length;i++){
+    result[i]=vec1[i]*vec2[i];
+  }
+  return result;
+}
