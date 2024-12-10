@@ -10,7 +10,7 @@ typedef struct Config {
     double precision;
 
     // Visualization settings
-    int enable_visualization; // 1 to enable, 0 to disable visualization
+    int enable_visualization;
     char visualization_mode[64]; // 2d or 3d
 
     // Random generator settings
@@ -31,4 +31,4 @@ void export_config(const Config* config, const char* filename); // [-]
 void reset_config(Config* config); // [-]
 void print_config(); // [-]
 void save_config(const char* config_file); // [-]
-#endif //CONFIG_H
+#endif
