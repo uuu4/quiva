@@ -53,10 +53,10 @@ double** transpose_matrix(const double* matrix[], int rows, int cols) {
 double dot_product(const double* vec1, const double* vec2, int length) {
     if (vec1 == NULL || vec2 == NULL || length <= 0) {
         printf("Invalid input to dot_product function.\n");
-        return 0.0; // Return 0 for invalid inputs
+        return 0.0;
     }
 
-    double result = 0.0; // Initialize result to store the sum
+    double result = 0.0;
     for (int i = 0; i < length; i++) {
         result += vec1[i] * vec2[i];
     }
