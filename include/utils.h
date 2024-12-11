@@ -23,18 +23,18 @@ double degrees_to_radians(double degrees);
 double radians_to_degrees(double radians);
 
 //logging
-void init_logger(const char* filename); // [-]
-void set_log_level(int level); // 0: debug, 1: info, 2: warning, 3: error // [-]
-void log_info(const char* message); // [-]
-void log_debug(const char* message); // [-]
-void log_warning(const char* message); // [-]
-void log_error(const char* message); // [-]
-void handle_error(const char* message); // [-]
-void close_logger(); // [-]
-void configure_logger(const char* filename, int level); // [-]
-void print_last_log(); // [-]
-void clear_logs(); // [-]
-void log_to_file(const char* message,const char* filename); // [-]
-void log_complex_data(const char* message, const char* data); // [-]
+void init_logger(const char* filename);
+void set_log_level(int level); // 0: debug, 1: info, 2: warning, 3: error
+void log_info(const char* message);
+void log_debug(const char* message);
+void log_warning(const char* message);
+void log_error(const char* message);
+void handle_error(const char* message);
+void close_logger();
+void configure_logger(const char* filename, int level);
+void print_last_log();
+void clear_logs();
+void log_to_file(const char* message,const char* filename);
+void log_complex_data(const char* message, const char* data);
 
 #endif

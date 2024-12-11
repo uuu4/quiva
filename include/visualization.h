@@ -22,4 +22,4 @@ void refresh_plot();
 void close_plot();
 
 
-#endif //VISUALIZATION_H
+#endif
