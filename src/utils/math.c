@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "utils.h"
-double** matrix_multiply(const double* m1[], const double* m2[], int r1, int c1, int r2, int c2) {
+double** matrix_multiply(double** m1, double** m2, int r1, int c1, int r2, int c2) {
     if (c1 != r2) {
         printf("Matrix multiplication not possible\n");
         return NULL;

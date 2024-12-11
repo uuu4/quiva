@@ -48,4 +48,14 @@ bool validate_qubit(const Qubit* qb) {
     return false;
   }
 }
-
+double** qubit_to_matrix(Qubit* qb) {
+  double** matrix = (double**)malloc(2 * sizeof(double*));
+  for (int i = 0; i < 2; i++) {
+    matrix[i] = (double*)malloc(2 * sizeof(double));
+  }
+  matrix[0][0] = qb->real[0];
+  matrix[0][1] = qb->imag[0];
+  matrix[1][0] = qb->real[1];
+  matrix[1][1] = qb->imag[1];
+  return matrix;
+}
