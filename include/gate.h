@@ -22,7 +22,7 @@ void apply_CCNOT_gate(Qubit* qb1, Qubit* qb2, Qubit* qb3); // [-]
 void apply_CRz_gate(Qubit* control, Qubit* target, double theta); // [-]
 
 //custom gates
-void apply_custom_gate(Qubit* qb, const double matrix[2][2]);
+Qubit* apply_custom_gate(Qubit* qb, const double input[2][2]);
 void apply_custom_multi_qubit_gate(Qubit* qbs[], int num_qubits, const double* matrix); // [-]
 
 // extra functions
