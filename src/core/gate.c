@@ -57,18 +57,31 @@ Qubit* apply_pauli_x_gate(Qubit* qb) {
 
 Qubit* apply_pauli_z_gate(Qubit* qb) {
     double** pauli_z = (double**)malloc(2 * sizeof(double*));
+    if (!pauli_z) return NULL;
+
     for (int i = 0; i < 2; i++) {
         pauli_z[i] = (double*)malloc(2 * sizeof(double));
+        if (!pauli_z[i]) {
+            for (int j = 0; j < i; j++) free(pauli_z[j]);
+            free(pauli_z);
+            return NULL;
+        }
     }
     pauli_z[0][0] = 1; pauli_z[0][1] = 0;
     pauli_z[1][0] = 0; pauli_z[1][1] = -1;
 
     double** qb_matrix = qubit_to_matrix(qb);
+    if (!qb_matrix) {
+        for (int i = 0; i < 2; i++) free(pauli_z[i]);
+        free(pauli_z);
+        return NULL;
+    }
 
     double** matrix_result = matrix_multiply(pauli_z, qb_matrix, 2, 2, 2, 1);
-    if (matrix_result == NULL) {
+    if (!matrix_result) {
         for (int i = 0; i < 2; i++) {
             free(pauli_z[i]);
+            free(qb_matrix[i]);
         }
         free(pauli_z);
         free(qb_matrix);
@@ -76,7 +89,7 @@ Qubit* apply_pauli_z_gate(Qubit* qb) {
     }
 
     Qubit* result_qb = (Qubit*)malloc(sizeof(Qubit));
-    if (result_qb == NULL) {
+    if (!result_qb) {
         for (int i = 0; i < 2; i++) {
             free(pauli_z[i]);
             free(qb_matrix[i]);
@@ -104,6 +117,7 @@ Qubit* apply_pauli_z_gate(Qubit* qb) {
 
     return result_qb;
 }
+
 Qubit* apply_custom_gate(Qubit* qb, const double input[2][2]) {
     double** qb_matrix = qubit_to_matrix(qb);
     if (!qb_matrix) {
