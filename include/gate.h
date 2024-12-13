@@ -3,7 +3,7 @@
 
 #include "qubit.h"
 // one qubit gates
-Qubit* apply_hadamard_gate(Qubit* qb); // [-]
+Qubit* apply_hadamard_gate(Qubit* qb);
 Qubit* apply_pauli_x_gate(Qubit* qb);
 Qubit* apply_pauli_y_gate(Qubit* qb); // [-]
 Qubit* apply_pauli_z_gate(Qubit* qb);
