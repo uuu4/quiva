@@ -3,6 +3,8 @@
 #include "utils.h"
 #include "qubit.h"
 #include <stdlib.h>
+#include <math.h>
+#define SQRT_2_INV 0.7071067811865476 // 1/sqrt(2)
 
 
 Qubit* apply_pauli_x_gate(Qubit* qb) {
@@ -192,6 +194,20 @@ Qubit* apply_custom_gate(Qubit* qb, const double input[2][2]) {
     free(custom_matrix);
     free(qb_matrix);
     free(matrix_result);
+
+    return result_qb;
+}
+
+Qubit* apply_hadamard_gate(Qubit* qb) {
+    if (!qb) return NULL;
+
+    Qubit* result_qb = (Qubit*)malloc(sizeof(Qubit));
+    if (!result_qb) return NULL;
+
+    result_qb->real[0] = SQRT_2_INV * (qb->real[0] + qb->real[1]);
+    result_qb->imag[0] = SQRT_2_INV * (qb->imag[0] + qb->imag[1]);
+    result_qb->real[1] = SQRT_2_INV * (qb->real[0] - qb->real[1]);
+    result_qb->imag[1] = SQRT_2_INV * (qb->imag[0] - qb->imag[1]);
 
     return result_qb;
 }
