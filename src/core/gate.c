@@ -212,3 +212,5 @@ Qubit* apply_hadamard_gate(Qubit* qb) {
     return result_qb;
 }
 
+
+

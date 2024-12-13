@@ -1,7 +1,3 @@
-//
-// Created by Ali Emre Aydin on 7.12.2024.
-//
-
 #ifndef TIMERS_H
 #define TIMERS_H
 #include <time.h>
