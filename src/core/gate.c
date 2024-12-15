@@ -116,5 +116,19 @@ Qubit* apply_hadamard_gate(Qubit* qb) {
     return result_qb;
 }
 
+Qubit* apply_pauli_y_gate(Qubit* qb) {
+    if (!qb) return NULL;
+
+    Qubit* result_qb = (Qubit*)malloc(sizeof(Qubit));
+    if (!result_qb) return NULL;
+
+    // Y = [0 -i; i 0] // might done matrix multiplication gotta check one more
+    result_qb->real[0] = qb->imag[1];
+    result_qb->imag[0] = -qb->real[1];
+    result_qb->real[1] = qb->imag[0];
+    result_qb->imag[1] = -qb->real[0];
+
+    return result_qb;
+}
 
 
