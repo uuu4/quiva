@@ -9,6 +9,7 @@ Qubit* apply_pauli_y_gate(Qubit* qb);
 Qubit* apply_pauli_z_gate(Qubit* qb);
 Qubit* apply_phase_gate(Qubit* qb,double theta);
 Qubit* apply_T_gate(Qubit* qb); // not necessary but will work
+Qubit* apply_S_gate(Qubit* qb); // not necessary but will work
 //parametric one qubic gates
 Qubit* apply_rotation_gate(Qubit* qb, char axis, double theta); // [-]
 

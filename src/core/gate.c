@@ -147,5 +147,6 @@ Qubit* apply_phase_gate(Qubit* qb, double theta) {
 Qubit* apply_T_gate(Qubit* qb) {
     return apply_phase_gate(qb, M_PI/4);
 }
-
-
+Qubit* apply_S_gate(Qubit* qb) {
+    return apply_phase_gate(qb, M_PI/2);
+}
