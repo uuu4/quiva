@@ -38,7 +38,7 @@ Qubit* apply_pauli_z_gate(Qubit* qb) {
 }
 
 
-Qubit* apply_custom_gate(Qubit* qb, const double input[2][2]) {
+Qubit* apply_custom_gate(Qubit* qb, const double input[2][2]) { // TO DO: gotta change fixed sizes
     double** qb_matrix = qubit_to_matrix(qb);
     if (!qb_matrix) {
         return NULL;
