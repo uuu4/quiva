@@ -5,9 +5,9 @@
 // one qubit gates
 Qubit* apply_hadamard_gate(Qubit* qb);
 Qubit* apply_pauli_x_gate(Qubit* qb);
-Qubit* apply_pauli_y_gate(Qubit* qb); // [-]
+Qubit* apply_pauli_y_gate(Qubit* qb);
 Qubit* apply_pauli_z_gate(Qubit* qb);
-Qubit* apply_phase_gate(Qubit* qb); // [-]
+Qubit* apply_phase_gate(Qubit* qb,double theta);
 Qubit* apply_T_gate(Qubit* qb); // [-]
 //parametric one qubic gates
 Qubit* apply_rotation_gate(Qubit* qb, char axis, double theta); // [-]
