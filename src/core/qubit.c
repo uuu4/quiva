@@ -59,3 +59,47 @@ double** qubit_to_matrix(Qubit* qb) {
   matrix[1][1] = qb->imag[1];
   return matrix;
 }
+
+MultiQubitState* tensorProduct(Qubit* qubits, int num_qubits) {
+  int size = (int)pow(2, num_qubits);  // 2^n total size of the vector
+  MultiQubitState* result = createMultiQubitState(num_qubits);
+
+  // to build tensor product iteratively, start with the first qubit
+  result->real[0] = qubits[0].real[0];
+  result->imag[0] = qubits[0].imag[0];
+  result->real[1] = qubits[0].real[1];
+  result->imag[1] = qubits[0].imag[1];
+
+  // iteratively compute the tensor product for the remaining qubits
+  for (int n = 1; n < num_qubits; n++) {
+    int prev_size = (int)pow(2, n);
+    Qubit* current_qubit = &qubits[n];
+    int new_size = prev_size * 2;
+
+    double* new_real = (double*)calloc(new_size, sizeof(double));
+    double* new_imag = (double*)calloc(new_size, sizeof(double));
+
+    if (new_real == NULL || new_imag == NULL) {
+      perror("Memory allocation failed for tensor product");
+      freeMultiQubitState(result);
+      exit(EXIT_FAILURE);
+    }
+
+    // perform the tensor product with the current qubit
+    for (int i = 0; i < prev_size; i++) {
+      // replace the old values with the new values
+      new_real[i * 2] = result->real[i] * current_qubit->real[0] - result->imag[i] * current_qubit->imag[0];
+      new_imag[i * 2] = result->real[i] * current_qubit->imag[0] + result->imag[i] * current_qubit->real[0];
+
+
+      new_real[i * 2 + 1] = result->real[i] * current_qubit->real[1] - result->imag[i] * current_qubit->imag[1];
+      new_imag[i * 2 + 1] = result->real[i] * current_qubit->imag[1] + result->imag[i] * current_qubit->real[1];
+    }
+    free(result->real);
+    free(result->imag);
+    result->real = new_real;
+    result->imag = new_imag;
+  }
+
+  return result;
+}

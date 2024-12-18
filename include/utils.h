@@ -21,7 +21,6 @@ void free_matrix(double** matrix, int rows);
 double** transpose_matrix(const double* matrix[], int rows, int cols);
 double degrees_to_radians(double degrees);
 double radians_to_degrees(double radians);
-MultiQubitState* tensor_product(Qubit* qb1, Qubit* qb2);
 
 //logging
 void init_logger(const char* filename);
