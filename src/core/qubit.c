@@ -103,3 +103,11 @@ MultiQubitState* tensorProduct(Qubit* qubits, int num_qubits) {
 
   return result;
 }
+
+void freeMultiQubitState(MultiQubitState* state) {
+  if (state) {
+    free(state->real);
+    free(state->imag);
+    free(state);
+  }
+}
