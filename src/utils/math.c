@@ -62,4 +62,31 @@ double dot_product(const double* vec1, const double* vec2, int length) {
     }
     return result;
 }
+MultiQubitState* tensor_product(Qubit* qb1, Qubit* qb2) {
+    if (!qb1 || !qb2) return NULL;
+
+    MultiQubitState* result = (MultiQubitState*)malloc(sizeof(MultiQubitState));
+    if (!result) return NULL;
+
+    result->num_qubits = 2;
+    result->real = (double*)malloc(4 * sizeof(double));
+    result->imag = (double*)malloc(4 * sizeof(double));
+
+    if (!result->real || !result->imag) {
+        free(result);
+        return NULL;
+    }
+
+    // Tensor product calculation
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            int idx = i * 2 + j; // Combined index
+            result->real[idx] = qb1->real[i] * qb2->real[j] - qb1->imag[i] * qb2->imag[j];
+            result->imag[idx] = qb1->real[i] * qb2->imag[j] + qb1->imag[i] * qb2->real[j];
+        }
+    }
+
+    return result;
+}
+
 
