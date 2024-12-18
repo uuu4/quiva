@@ -27,6 +27,7 @@ MultiQubitState* initialize_multi_qubit_state(int num_qubits); // redundant sinc
 MultiQubitState* tensor_product(Qubit* qubits, int num_qubits);
 void free_multi_qubit_state(MultiQubitState* state);
 void print_multi_qubit_state(const MultiQubitState* state);
+MultiQubitState* tensor_product(Qubit* qubits, int num_qubits);
 
 
 #endif
