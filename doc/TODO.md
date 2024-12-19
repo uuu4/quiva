@@ -1,4 +1,7 @@
+0.1: in gate.c , need to update apply_rotation_gate for arbitrary inputs, it currently working on only x y and z axis
+
 1: Ensure minimal coupling between modules by defining clear APIs between them
+
 
 2: Provide docstrings for functions (with parameter and return descriptions).
 Write markdown guides in the doc/ directory explaining:
