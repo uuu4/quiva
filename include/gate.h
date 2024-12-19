@@ -11,7 +11,7 @@ Qubit* apply_phase_gate(Qubit* qb,double theta);
 Qubit* apply_T_gate(Qubit* qb); // not necessary but will work
 Qubit* apply_S_gate(Qubit* qb); // not necessary but will work
 //parametric one qubic gates
-Qubit* apply_rotation_gate(Qubit* qb, char axis, double theta); // [-]
+Qubit* apply_rotation_gate(Qubit* qb, char axis, double theta);
 
 //multi qubit gates
 Qubit* apply_CNOT_gate(Qubit* control, Qubit* target); // [-]
