@@ -150,3 +150,34 @@ Qubit* apply_T_gate(Qubit* qb) {
 Qubit* apply_S_gate(Qubit* qb) {
     return apply_phase_gate(qb, M_PI/2);
 }
+Qubit* apply_rotation_gate(Qubit* qb, char axis, double theta) {
+    if (!qb) return NULL;
+
+    Qubit* result_qb = (Qubit*)malloc(sizeof(Qubit));
+    if (!result_qb) return NULL;
+
+    // Rx = [cos(theta/2), -i*sin(theta/2); -i*sin(theta/2), cos(theta/2)]
+    // Ry = [cos(theta/2), -sin(theta/2); sin(theta/2), cos(theta/2)]
+    // Rz = [e^(-i*theta/2), 0; 0, e^(i*theta/2)]
+    switch (axis) {
+        case 'x':
+            result_qb->real[0] = qb->real[0] * cos(theta / 2) + qb->imag[1] * sin(theta / 2);
+        result_qb->imag[0] = qb->imag[0] * cos(theta / 2) - qb->real[1] * sin(theta / 2);
+        result_qb->real[1] = qb->real[1] * cos(theta / 2) + qb->imag[0] * sin(theta / 2);
+        result_qb->imag[1] = qb->imag[1] * cos(theta / 2) - qb->real[0] * sin(theta / 2);
+        break;
+        /*case 'y':
+            result_qb->real[0] = qb->real[0] * cos(theta / 2) - qb->imag[1] * sin(theta / 2);
+        result_qb->imag[0] = qb->real[1] * sin(theta / 2) + qb->imag[0] * cos(theta / 2);
+        result_qb->real[1] = qb->real[0] * sin(theta / 2) + qb->imag[1] * cos(theta / 2);
+        result_qb->imag[1] = qb->real[1] * cos(theta / 2) - qb->imag[0] * sin(theta / 2);
+        break;
+        case 'z':
+            result_qb->real[0] = qb->real[0] * cos(theta / 2) - qb->imag[0] * sin(theta / 2);
+        result_qb->imag[0] = qb->real[0] * sin(theta / 2) + qb->imag[0] * cos(theta / 2);
+        result_qb->real[1] = qb->real[1] * cos(theta / 2) - qb->imag[1] * sin(theta / 2);
+        result_qb->imag[1] = qb->real[1] * sin(theta / 2) + qb->imag[1] * cos(theta / 2);
+        break;*/ // gotta check if these are correct NOT WORKING CURRENTLY
+    }
+    return result_qb;
+}
