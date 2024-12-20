@@ -150,7 +150,7 @@ Qubit* apply_T_gate(Qubit* qb) {
 Qubit* apply_S_gate(Qubit* qb) {
     return apply_phase_gate(qb, M_PI/2);
 }
-Qubit* apply_rotation_gate(Qubit* qb, char axis, double theta) { // need to add more
+Qubit* apply_rotation_gate(Qubit* qb, char axis, double theta) { // need to update for arbitrary axis
     if (!qb) return NULL;
 
     Qubit* result_qb = (Qubit*)malloc(sizeof(Qubit));
