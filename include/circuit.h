@@ -30,12 +30,6 @@ int apply_single_qubit_gate(QuantumCircuit* circuit, Qubit* (*gate_func)(Qubit*)
  * @return 0 if successful, -1 if an error occurs.
  */
 int apply_two_qubit_gate(QuantumCircuit* circuit, Qubit* (*gate_func)(Qubit*, Qubit*), uint16_t control, uint16_t target);
-
-/**
- * @brief Frees the memory allocated for the quantum circuit.
- *
- * @param circuit Pointer to the quantum circuit to free.
- */
 void free_circuit(QuantumCircuit* circuit);
 
 #endif // CIRCUIT_H
