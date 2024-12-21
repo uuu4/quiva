@@ -4,7 +4,6 @@
 #include <stdint.h>
 #include "qubit.h"
 
-// Quantum Circuit Structure
 typedef struct {
     uint16_t num_qubits;
     Qubit** qubits;
