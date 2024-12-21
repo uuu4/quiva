@@ -21,11 +21,6 @@ int apply_single_qubit_gate(QuantumCircuit* circuit, Qubit* (*gate_func)(Qubit*)
 
 /**
  * @brief Applies a two-qubit gate to a control and target qubit.
- *
- * @param circuit Pointer to the quantum circuit.
- * @param gate_func Function pointer to the two-qubit gate (e.g., apply_CNOT_gate).
- * @param control Index of the control qubit.
- * @param target Index of the target qubit.
  * @return 0 if successful, -1 if an error occurs.
  */
 int apply_two_qubit_gate(QuantumCircuit* circuit, Qubit* (*gate_func)(Qubit*, Qubit*), uint16_t control, uint16_t target);
