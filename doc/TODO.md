@@ -6,15 +6,21 @@
 
 ### Core Features
 - [ ] **Gate Implementations**
-    - Add support for common gates:
+    - Single-Qubit Gates:
         - [x] Pauli Gates (X, Y, Z)
-        - [x] Phase Gates (S, T)
-        - [ ] Hadamard Gate
+        - [x] Phase Gates (S, T, custom phase gate with θ parameter)
+        - [x] Hadamard Gate (H)
+        - [ ] Identity Gate (I)
+    - Multi-Qubit Gates:
         - [ ] Controlled Gates (CNOT, Toffoli, etc.)
         - [ ] SWAP Gate
-        - [ ] Universal Gate Sets (arbitrary unitary operations).
-    - Ensure gates work seamlessly with \( n \)-qubit systems.
-    - Add ability to chain gates into a "quantum circuit."
+        - [ ] Controlled Phase Gates (CRZ, CRY, CRX, CU1, CU2, CU3)
+        - [ ] Multi-Control Gates (e.g., Multi-controlled Toffoli)
+    - Universal Gates:
+        - [ ] Arbitrary unitary matrices as gates (user-defined).
+    - Noise Models:
+        - [ ] Depolarizing channel.
+        - [ ] Amplitude and phase damping.
 
 - [ ] **Quantum Measurement**
     - Implement measurement for \( n \)-qubit systems:
