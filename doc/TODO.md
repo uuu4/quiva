@@ -35,14 +35,25 @@
         - Apply gates sequentially.
         - Visualize intermediate states.
     - Add support for time evolution of quantum systems.
-```c
-Qubit* qb = initialize_qubit(0, 0);  // Initialize |0⟩ state
-Circuit* qc = create_circuit(1);    // 1-qubit circuit
-add_gate(qc, H_GATE, 0);            // Add Hadamard gate to qubit 0
-add_gate(qc, X_GATE, 0);            // Add Pauli-X gate
-simulate(qc, qb);                   // Simulate the circuit
-measure(qb);                        // Perform measurement
-```
+---
+
+## 2. **API Design**
+
+### High-Level API
+- [ ] **Object-Oriented Quantum Circuit Interface**
+    - Create a `QuantumCircuit` class to represent circuits.
+        - Methods to:
+            - Add gates (`add_gate()` or `apply_gate()`).
+            - Add measurements (`measure()`).
+            - Visualize circuit structure (`show_circuit()`).
+        - Support serialization (e.g., export to JSON or OpenQASM).
+    - Example usage:
+      ```c
+      QuantumCircuit* qc = create_circuit(2);  // Create a 2-qubit circuit
+      add_gate(qc, HADAMARD, 0);              // Apply H gate to qubit 0
+      add_gate(qc, CNOT, 0, 1);               // Apply CNOT gate
+      measure(qc, 1);                         // Measure qubit 1
+      ```
 3.2 Encourage Extensibility: Design the API so users can extend it by:
 Adding custom gates.
 Creating new visualization methods (e.g., custom Bloch sphere styles).
