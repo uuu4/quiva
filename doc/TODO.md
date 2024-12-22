@@ -1,14 +1,26 @@
 ***0.1: in gate.c , need to update apply_rotation_gate for arbitrary inputs, it currently working on only x y and z axis***
 
-1: Ensure minimal coupling between modules by defining clear APIs between them
+# TODO
 
+## 1. Features to Implement
 
-2: Provide docstrings for functions (with parameter and return descriptions).
-Write markdown guides in the doc/ directory explaining:
-How the library works.
-Examples of constructing and running quantum circuits.
-Make usage intuitive for users who aren’t experts in this codebase.
+### Core Features
+- [ ] **Gate Implementations**
+    - Add support for common gates:
+        - [x] Pauli Gates (X, Y, Z)
+        - [x] Phase Gates (S, T)
+        - [ ] Hadamard Gate
+        - [ ] Controlled Gates (CNOT, Toffoli, etc.)
+        - [ ] SWAP Gate
+        - [ ] Universal Gate Sets (arbitrary unitary operations).
+    - Ensure gates work seamlessly with \( n \)-qubit systems.
+    - Add ability to chain gates into a "quantum circuit."
 
+- [ ] **Quantum Measurement**
+    - Implement measurement for \( n \)-qubit systems:
+        - Collapse states probabilistically.
+        - Return measurement results in binary format (e.g., |01⟩, |11⟩).
+    - Add repeated measurement functionality to simulate experiment outcomes.
 ---
 3.1:Define a Simple API for Circuits: A user should be able to build a circuit and simulate it in a few lines:
 ```c
