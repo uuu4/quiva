@@ -54,30 +54,98 @@
       add_gate(qc, CNOT, 0, 1);               // Apply CNOT gate
       measure(qc, 1);                         // Measure qubit 1
       ```
-3.2 Encourage Extensibility: Design the API so users can extend it by:
-Adding custom gates.
-Creating new visualization methods (e.g., custom Bloch sphere styles).
-Defining unique simulation behaviors (e.g., noise models for quantum error correction).
+### Low-Level API
+- [ ] Provide access to:
+    - Tensor product functionality for manual multi-qubit state construction.
+    - Direct gate application to raw `Qubit` structures.
+
+### Visualization and Interaction
+- [ ] Add visualization for:
+    - Quantum states (as vectors or Bloch spheres).
+    - Circuit diagrams (ASCII art or graphical).
+- [ ] Allow live interaction:
+    - Users can create and modify circuits via a scripting interface.
+
 ---
-4.Emphasize Visualization
 
-Manim’s strength lies in its stunning visuals. Your project can similarly provide intuitive visualizations for quantum states and processes.
-Visualization Ideas:
+## 3. Optimization Tasks
+- [ ] Optimize tensor product calculations for large systems.
+- [ ] Refactor memory allocation in gate application functions.
+- [ ] Introduce caching for frequently-used operations (e.g., repeated gates or tensor products).
+- [ ] Ensure compatibility with parallel computation (e.g., OpenMP or GPU-based libraries).
 
-Bloch Sphere:
-Show live visualization of a qubit’s state evolving on the Bloch sphere.
-Allow users to export visualizations (e.g., as .png or .mp4).
-Quantum Circuit Diagrams:
-Create diagrams like this:
-    
-    Qubit 0: ──H──X──M──
+---
 
-You can store these as text-based visuals, or use a library like Graphviz or matplotlib for better rendering.
+## 4. Testing
+- [ ] Write unit tests for:
+    - Gate functions (single and multi-qubit).
+    - Tensor product functionality for correctness.
+    - Measurement logic for probabilistic outcomes.
+    - Quantum circuits with complex sequences of gates.
+- [ ] Test edge cases:
+    - Invalid states or gate parameters.
+    - Tensor products with null/empty states.
+    - Precision issues with floating-point operations.
+- [ ] Validate results against known quantum simulators like Qiskit or Cirq.
 
-Time Evolution:
-Show animations of wavefunctions or qubit state amplitudes evolving in time.
-For example:
-Qubit |0>: (0.707 + 0.707i) |0⟩ + 0 |1⟩
+---
 
-Integration with 3D Graphics:
-If feasible, integrate with OpenGL or similar for interactive 3D visualizations.
+## 5. Documentation
+- [ ] Update **README.md**:
+    - Add project overview and key features.
+    - Provide installation and usage instructions.
+    - Include examples of:
+        - Initializing quantum circuits.
+        - Applying gates and measurements.
+        - Visualizing results.
+- [ ] Write a comprehensive API guide:
+    - Explain the high-level API for building circuits.
+    - Document low-level functions for advanced users.
+- [ ] Include step-by-step tutorials:
+    - Quantum basics (e.g., superposition, entanglement).
+    - Using the library to simulate specific algorithms (e.g., Grover's, Shor's).
+    - Visualization techniques for states and circuits.
+
+---
+
+## 6. Advanced Features to Add
+- [ ] **Custom Gates**
+    - Allow users to define their own unitary matrices as gates.
+    - Validate custom gates for unitarity.
+- [ ] **Noise Simulation**
+    - Add basic noise models (e.g., depolarizing, amplitude damping).
+    - Simulate noisy quantum circuits and compare results with noiseless runs.
+- [ ] **Integration**
+    - Export circuits to OpenQASM or other quantum circuit formats.
+    - Add bindings for Python to provide scripting capabilities.
+
+---
+
+## 7. Visualization
+- [ ] Circuit Diagram Generator
+    - Create ASCII or graphical circuit diagrams.
+    - Include gate names, qubits, and measurements.
+- [ ] State Representation
+    - Add visualizations for:
+        - Probability amplitudes of states.
+        - Bloch sphere for single-qubit states.
+
+---
+
+## 8. Milestones
+
+### Phase 1: Core Functionality
+- Implement single-qubit gates and basic measurements.
+- Finalize tensor product functionality.
+
+### Phase 2: Circuit and API Development
+- Create `QuantumCircuit` class.
+- Add support for multi-qubit gates and measurement chaining.
+
+### Phase 3: Advanced Features and Optimization
+- Add custom gate support and noisy simulations.
+- Optimize memory and computation for large systems.
+
+### Phase 4: Visualization and Documentation
+- Complete visualization features for states and circuits.
+- Finalize API documentation and tutorials.
