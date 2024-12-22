@@ -21,8 +21,10 @@
         - Collapse states probabilistically.
         - Return measurement results in binary format (e.g., |01⟩, |11⟩).
     - Add repeated measurement functionality to simulate experiment outcomes.
----
-3.1:Define a Simple API for Circuits: A user should be able to build a circuit and simulate it in a few lines:
+
+- [ ] **Tensor Product**
+    - Add functionality for computing tensor products of arbitrary numbers of qubits.
+    - Optimize for \( n \)-qubit systems by using sparse representations where possible.
 ```c
 Qubit* qb = initialize_qubit(0, 0);  // Initialize |0⟩ state
 Circuit* qc = create_circuit(1);    // 1-qubit circuit
