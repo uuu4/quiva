@@ -25,6 +25,16 @@
 - [ ] **Tensor Product**
     - Add functionality for computing tensor products of arbitrary numbers of qubits.
     - Optimize for \( n \)-qubit systems by using sparse representations where possible.
+- [ ] **State Initialization**
+    - Provide user-friendly API to initialize quantum states:
+        - [ ] Single-qubit states.
+        - [ ] Multi-qubit states (e.g., |00⟩, |ψ+⟩).
+        - [ ] Randomized pure or mixed states.
+- [ ] **Simulation Backend**
+    - Enable step-by-step simulation of quantum circuits:
+        - Apply gates sequentially.
+        - Visualize intermediate states.
+    - Add support for time evolution of quantum systems.
 ```c
 Qubit* qb = initialize_qubit(0, 0);  // Initialize |0⟩ state
 Circuit* qc = create_circuit(1);    // 1-qubit circuit
