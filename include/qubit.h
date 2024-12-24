@@ -19,7 +19,10 @@ typedef struct MultiQubitState {
 void init_qubit(Qubit* qb); // initializes a qubit to |0⟩
 void init_custom_qubit(Qubit* qb, double real0, double imag0, double real1, double imag1);
 void print_qubit(const Qubit* qb);
-void normalize_qubit(Qubit* qb);
+void normalize_qubit(Qubit* qb, int measurement); /* Say we measure the 1st qubit to be a 1, let 41) be
+                                                        the state after the measurement
+                                                        We get rid of all the states that don't have a 1 in
+                                                      the first qubit and then normalize the rest of the states*/
 bool validate_qubit(const Qubit* qb);
 double** qubit_to_matrix(Qubit* qb);
 
