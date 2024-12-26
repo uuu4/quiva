@@ -62,7 +62,7 @@ double** qubit_to_matrix(Qubit* qb) {
 
 MultiQubitState* tensorProduct(Qubit* qubits, int num_qubits) { // was too damn hard to implement this
   int size = (int)pow(2, num_qubits);  // 2^n total size of the vector
-  MultiQubitState* result = createMultiQubitState(num_qubits);
+  MultiQubitState* result = createMultiQubitState(num_qubits); // FUNCTION NOT IMPLEMENTED! ERROR!
 
   // to build tensor product iteratively, start with the first qubit
   result->real[0] = qubits[0].real[0];
