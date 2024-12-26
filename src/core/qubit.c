@@ -1,5 +1,7 @@
-#include "qubit.h"
+#include "../../include/qubit.h"
 #include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 void init_qubit(Qubit* qb){ //initializes a qubit to |0⟩
   qb->real[0] = 1;
@@ -20,7 +22,7 @@ void print_qubit(const Qubit* qb){
   printf("|%.2f + %.2fi⟩\n", qb->real[1], qb->imag[1]);
 }
 
-void normalize_qubit(Qubit* qb){
+void normalize_qubit(Qubit* qb,int measurement) {
   double magnitude = sqrt(pow(qb->real[0], 2) + pow(qb->imag[0], 2) + pow(qb->real[1], 2) + pow(qb->imag[1], 2));
   double epsilon = 1e-9; // Tolerance for floating-point comparison
   if (fabs(magnitude) < epsilon) {

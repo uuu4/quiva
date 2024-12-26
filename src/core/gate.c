@@ -1,7 +1,6 @@
-#include "qubit.h"
-#include "gate.h"
-#include "utils.h"
-#include "qubit.h"
+#include "../../include/gate.h"
+#include "../../include/utils.h"
+#include "../../include/qubit.h"
 #include <stdlib.h>
 #include <math.h>
 #define SQRT_2_INV 0.7071067811865476 // 1/sqrt(2)
@@ -185,7 +184,7 @@ Qubit* apply_rotation_gate(Qubit* qb, char axis, double theta) { // need to upda
     return result_qb;
 }
 
-void apply_CNOT_gate_n(Qubit* qubits[], int control_index, int target_index, int num_qubits) {
+void apply_CNOT_gate(Qubit* qubits[], int control_index, int target_index, int num_qubits) {
     if (!qubits || control_index >= num_qubits || target_index >= num_qubits) return;
 
     Qubit* control = qubits[control_index];
