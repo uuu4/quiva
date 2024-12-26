@@ -15,7 +15,7 @@ Qubit* apply_S_gate(Qubit* qb); // not necessary but will work
 Qubit* apply_rotation_gate(Qubit* qb, char axis, double theta); // Check TODO.MD
 
 //multi qubit gates
-Qubit* apply_CNOT_gate(Qubit* control, Qubit* target);
+Qubit* apply_CNOT_gate(Qubit* qubits[], int control_index, int target_index, int num_qubits);
 Qubit* apply_CZ_gate(Qubit* control, Qubit* target); // [-]
 Qubit* apply_CY_gate(Qubit* control, Qubit* target); // [-]
 Qubit* apply_SWAP_gate(Qubit* qb1, Qubit* qb2); // [-]

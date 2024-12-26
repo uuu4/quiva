@@ -12,7 +12,7 @@ void init_qubit(Qubit* qb){ //initializes a qubit to |0⟩
 
 void init_custom_qubit(Qubit* qb, double real0, double imag0, double real1, double imag1){ //initializes a qubit to custom state
   qb->real[0] = real0;
-  qb->real[1] = real1
+  qb->real[1] = real1;
   qb->imag[0] = imag0;
   qb->imag[1] = imag1;
 }
@@ -83,7 +83,7 @@ MultiQubitState* tensorProduct(Qubit* qubits, int num_qubits) { // was too damn 
 
     if (new_real == NULL || new_imag == NULL) {
       perror("Memory allocation failed for tensor product");
-      freeMultiQubitState(result);
+      free_multi_qubit_state(result);
       exit(EXIT_FAILURE);
     }
 
@@ -106,7 +106,7 @@ MultiQubitState* tensorProduct(Qubit* qubits, int num_qubits) { // was too damn 
   return result;
 }
 
-void freeMultiQubitState(MultiQubitState* state) {
+void free_multi_qubit_state(MultiQubitState* state){
   if (state) {
     free(state->real);
     free(state->imag);

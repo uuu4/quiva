@@ -184,13 +184,13 @@ Qubit* apply_rotation_gate(Qubit* qb, char axis, double theta) { // need to upda
     return result_qb;
 }
 
-void apply_CNOT_gate(Qubit* qubits[], int control_index, int target_index, int num_qubits) {
-    if (!qubits || control_index >= num_qubits || target_index >= num_qubits) return;
+Qubit* apply_CNOT_gate(Qubit* qubits[], int control_index, int target_index, int num_qubits) {
+    if (!qubits || control_index >= num_qubits || target_index >= num_qubits) return NULL;
 
     Qubit* control = qubits[control_index];
     Qubit* target = qubits[target_index];
 
-    if (!control || !target) return;
+    if (!control || !target) return NULL;
 
     if (control->real[1] == 1 && control->imag[1] == 0) {
         // flip the target qubit
@@ -205,6 +205,7 @@ void apply_CNOT_gate(Qubit* qubits[], int control_index, int target_index, int n
             target->real[1] = 0;
             target->imag[1] = 0;
         }
+        return target;
     }
 }
 
