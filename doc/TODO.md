@@ -1,10 +1,10 @@
 ***0.1: in gate.c , need to update apply_rotation_gate for arbitrary inputs, it currently working on only x y and z axis***
 
-***0.2:GATE.H APPLY_CNOT_GATE FUNCTION NEED TO BE MORE GENERAL. RIGHT NOW IT ONLY USED IN 0 AND 1 TARGET STATES.***
+***0.2: in gate.c APPLY_CNOT_GATE FUNCTION needed to be more general. Right now it only used in 0 and 1 target states.***
 
 
 
-***0.3: QUBIT.C LINE 65 CREATE_MULTIQUBIT_STATE FUNCTION, NEED TO UPDATE THE FUNCTION TO CREATE A QUBIT WITH A GIVEN STATE***
+***0.3: in qubit.c CREATE_MULTIQUBIT_STATE FUNCTION, need to update the function to create a qubit with a given state***
 # TODO
 
 ## 1. Features to Implement
