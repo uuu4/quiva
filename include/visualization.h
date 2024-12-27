@@ -2,6 +2,8 @@
 #define VISUALIZATION_H
 
 #include "qubit.h"
+
+
 void plot_bloch_sphere(Qubit* qb);
 void calculate_bloch_coordinates(Qubit* qb, double* theta, double* phi);
 void visualize_qubit_state(Qubit* qb);
