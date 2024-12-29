@@ -64,7 +64,7 @@ double** qubit_to_matrix(Qubit* qb) {
 
 MultiQubitState* tensorProduct(Qubit* qubits, int num_qubits) { // was too damn hard to implement this
   int size = (int)pow(2, num_qubits);  // 2^n total size of the vector
-  MultiQubitState* result = createMultiQubitState(num_qubits); // FUNCTION NOT IMPLEMENTED! ERROR!
+  MultiQubitState* result = create_multi_qubit_state(num_qubits); // FUNCTION NOT IMPLEMENTED! ERROR!
 
   // to build tensor product iteratively, start with the first qubit
   result->real[0] = qubits[0].real[0];
@@ -112,4 +112,27 @@ void free_multi_qubit_state(MultiQubitState* state){
     free(state->imag);
     free(state);
   }
+}
+
+MultiQubitState* create_multi_qubit_state(int num_qubits) {
+  MultiQubitState* state = (MultiQubitState*)malloc(sizeof(MultiQubitState));
+  if (state == NULL) {
+    perror("Memory allocation failed for MultiQubitState");
+    exit(EXIT_FAILURE);
+  }
+
+  state->num_qubits = num_qubits;
+
+  int size = (int)pow(2, num_qubits);
+
+  state->real = (double*)calloc(size, sizeof(double));
+  state->imag = (double*)calloc(size, sizeof(double));
+
+  if (state->real == NULL || state->imag == NULL) {
+    perror("Memory allocation failed for state vector");
+    free(state);
+    exit(EXIT_FAILURE);
+  }
+
+  return state;
 }

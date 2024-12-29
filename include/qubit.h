@@ -28,6 +28,7 @@ double** qubit_to_matrix(Qubit* qb);
 
 MultiQubitState* initialize_multi_qubit_state(int num_qubits); // it should be used in entangled qubit states [-]
 MultiQubitState* tensor_product(Qubit* qubits, int num_qubits);
+MultiQubitState* create_multi_qubit_state(int num_qubits);
 void free_multi_qubit_state(MultiQubitState* state);
 void print_multi_qubit_state(const MultiQubitState* state);
 #endif
