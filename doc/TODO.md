@@ -15,7 +15,6 @@
         - [x] Pauli Gates (X, Y, Z)
         - [x] Phase Gates (S, T, custom phase gate with θ parameter)
         - [x] Hadamard Gate (H)
-        - [ ] Identity Gate (I)
     - Multi-Qubit Gates:
         - [ ] Controlled Gates (CNOT, Toffoli, etc.)
         - [ ] SWAP Gate
