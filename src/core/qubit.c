@@ -4,26 +4,23 @@
 #include <stdlib.h>
 #include <math.h>
 void init_qubit(Qubit* qb){ //initializes a qubit to |0⟩
-  qb->real[0] = 1;
-  qb->real[1] = 0;
-  qb->imag[0] = 0;
-  qb->imag[1] = 0;
+  qb->state[0].real = 1;
 }
 
 void init_custom_qubit(Qubit* qb, double real0, double imag0, double real1, double imag1){ //initializes a qubit to custom state
-  qb->real[0] = real0;
-  qb->real[1] = real1;
-  qb->imag[0] = imag0;
-  qb->imag[1] = imag1;
+  qb->state[0].real = real0;
+  qb->state[1].real = real1;
+  qb->state[0].imag = imag0;
+  qb->state[1].imag = imag1;
 }
 
 void print_qubit(const Qubit* qb){
-  printf("|%.2f + %.2fi⟩\n", qb->real[0], qb->imag[0]);
-  printf("|%.2f + %.2fi⟩\n", qb->real[1], qb->imag[1]);
+  printf("|%.2f + %.2fi⟩\n", qb->state[0].real, qb->state[0].imag);
+  printf("|%.2f + %.2fi⟩\n", qb->state[0].real, qb->state[1].imag);
 }
 
 void normalize_qubit(Qubit* qb,int measurement) {
-  double magnitude = sqrt(pow(qb->real[0], 2) + pow(qb->imag[0], 2) + pow(qb->real[1], 2) + pow(qb->imag[1], 2));
+  double magnitude = sqrt(pow(qb->state[0].real, 2) + pow(qb->state[0].imag, 2) + pow(qb->state[1].real, 2) + pow(qb->state[1].imag, 2));
   double epsilon = 1e-9; // Tolerance for floating-point comparison
   if (fabs(magnitude) < epsilon) {
     init_qubit(qb);
