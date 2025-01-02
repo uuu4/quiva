@@ -2,17 +2,17 @@
 #define QUBIT_H
 #include <stdbool.h>
 
+
+typedef struct{
+  double real;
+  double imag;
+}Complex;
+
 // qubit structure definition
 typedef struct Qubit {
-    double real[2];
-    double imag[2];
+    Complex state[2]; // state vector of the qubit
 } Qubit;
 
-typedef struct MultiQubitState {
-    int num_qubits;
-    double* real;          // real parts of the state vector e.g alpha1,alpha2...
-    double* imag;          // imaginary parts of the state vector e.g beta1,beta2...
-} MultiQubitState;
 
 
 
