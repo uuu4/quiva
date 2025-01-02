@@ -107,10 +107,10 @@ Qubit* apply_hadamard_gate(Qubit* qb) {
     Qubit* result_qb = (Qubit*)malloc(sizeof(Qubit));
     if (!result_qb) return NULL;
 
-    result_qb->real[0] = SQRT_2_INV * (qb->real[0] + qb->real[1]);
-    result_qb->imag[0] = SQRT_2_INV * (qb->imag[0] + qb->imag[1]);
-    result_qb->real[1] = SQRT_2_INV * (qb->real[0] - qb->real[1]);
-    result_qb->imag[1] = SQRT_2_INV * (qb->imag[0] - qb->imag[1]);
+    result_qb->state[0].real = SQRT_2_INV * (qb->state[0].real + qb->state[1].real);
+    result_qb->state[0].imag = SQRT_2_INV * (qb->state[0].imag + qb->state[1].imag);
+    result_qb->state[1].real = SQRT_2_INV * (qb->state[0].real - qb->state[1].real);
+    result_qb->state[1].imag = SQRT_2_INV * (qb->state[0].imag - qb->state[1].imag);
 
     return result_qb;
 }
@@ -122,10 +122,10 @@ Qubit* apply_pauli_y_gate(Qubit* qb) {
     if (!result_qb) return NULL;
 
     // Y = [0 -i; i 0] // might done matrix multiplication gotta check one more
-    result_qb->real[0] = qb->imag[1];
-    result_qb->imag[0] = -qb->real[1];
-    result_qb->real[1] = qb->imag[0];
-    result_qb->imag[1] = -qb->real[0];
+    result_qb->state[0].real = qb->state[1].imag;
+    result_qb->state[0].imag = -1 * qb->state[1].real;
+    result_qb->state[1].real = qb->state[0].imag;
+    result_qb->state[1].imag = -1 * qb->state[0].real;
 
     return result_qb;
 }
