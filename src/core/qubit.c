@@ -37,8 +37,8 @@ void normalize_qubit(Qubit* qb,int measurement) {
 }
 
 bool validate_qubit(const Qubit* qb) {
-  double result0 = pow(qb->real[0], 2) + pow(qb->state[0].imag, 2);
-  double result1 = pow(qb->real[1], 2) + pow(qb->imag[1], 2);
+  double result0 = pow(qb->state[0].real, 2) + pow(qb->state[0].imag, 2);
+  double result1 = pow(qb->state[1].real, 2) + pow(qb->state[1].imag, 2);
   double epsilon = 1e-9; // Tolerance for floating-point comparison
 
   if (fabs(result0 + result1 - 1) < epsilon) {
@@ -52,10 +52,10 @@ double** qubit_to_matrix(Qubit* qb) {
   for (int i = 0; i < 2; i++) {
     matrix[i] = (double*)malloc(2 * sizeof(double));
   }
-  matrix[0][0] = qb->real[0];
-  matrix[0][1] = qb->imag[0];
-  matrix[1][0] = qb->real[1];
-  matrix[1][1] = qb->imag[1];
+  matrix[0][0] = qb->state[0].real;
+  matrix[0][1] = qb->state[0].imag;
+  matrix[1][0] = qb->state[1].real;
+  matrix[1][1] = qb->state[1].imag;
   return matrix;
 }
 
