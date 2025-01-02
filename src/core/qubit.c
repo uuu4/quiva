@@ -4,26 +4,23 @@
 #include <stdlib.h>
 #include <math.h>
 void init_qubit(Qubit* qb){ //initializes a qubit to |0⟩
-  qb->real[0] = 1;
-  qb->real[1] = 0;
-  qb->imag[0] = 0;
-  qb->imag[1] = 0;
+  qb->state[0].real = 1;
 }
 
 void init_custom_qubit(Qubit* qb, double real0, double imag0, double real1, double imag1){ //initializes a qubit to custom state
-  qb->real[0] = real0;
-  qb->real[1] = real1;
-  qb->imag[0] = imag0;
-  qb->imag[1] = imag1;
+  qb->state[0].real = real0;
+  qb->state[1].real = real1;
+  qb->state[0].imag = imag0;
+  qb->state[1].imag = imag1;
 }
 
 void print_qubit(const Qubit* qb){
-  printf("|%.2f + %.2fi⟩\n", qb->real[0], qb->imag[0]);
-  printf("|%.2f + %.2fi⟩\n", qb->real[1], qb->imag[1]);
+  printf("|%.2f + %.2fi⟩\n", qb->state[0].real, qb->state[0].imag);
+  printf("|%.2f + %.2fi⟩\n", qb->state[0].real, qb->state[1].imag);
 }
 
 void normalize_qubit(Qubit* qb,int measurement) {
-  double magnitude = sqrt(pow(qb->real[0], 2) + pow(qb->imag[0], 2) + pow(qb->real[1], 2) + pow(qb->imag[1], 2));
+  double magnitude = sqrt(pow(qb->state[0].real, 2) + pow(qb->state[0].imag, 2) + pow(qb->state[1].real, 2) + pow(qb->state[1].imag, 2));
   double epsilon = 1e-9; // Tolerance for floating-point comparison
   if (fabs(magnitude) < epsilon) {
     init_qubit(qb);
@@ -33,15 +30,15 @@ void normalize_qubit(Qubit* qb,int measurement) {
     printf("Qubit is already normalized.\n");
     return;
   }
-    qb->real[0] = qb->real[0]/magnitude;
-    qb->real[1] = qb->real[1]/magnitude;
-    qb->imag[0] = qb->imag[0]/magnitude;
-    qb->imag[1] = qb->imag[1]/magnitude;
+    qb->state[0].real = qb->state[0].real/magnitude;
+    qb->state[1].real = qb->state[1].real/magnitude;
+    qb->state[0].imag = qb->state[0].imag/magnitude;
+    qb->state[1].imag = qb->state[1].imag/magnitude;
 }
 
 bool validate_qubit(const Qubit* qb) {
-  double result0 = pow(qb->real[0], 2) + pow(qb->imag[0], 2);
-  double result1 = pow(qb->real[1], 2) + pow(qb->imag[1], 2);
+  double result0 = pow(qb->state[0].real, 2) + pow(qb->state[0].imag, 2);
+  double result1 = pow(qb->state[1].real, 2) + pow(qb->state[1].imag, 2);
   double epsilon = 1e-9; // Tolerance for floating-point comparison
 
   if (fabs(result0 + result1 - 1) < epsilon) {
@@ -55,13 +52,13 @@ double** qubit_to_matrix(Qubit* qb) {
   for (int i = 0; i < 2; i++) {
     matrix[i] = (double*)malloc(2 * sizeof(double));
   }
-  matrix[0][0] = qb->real[0];
-  matrix[0][1] = qb->imag[0];
-  matrix[1][0] = qb->real[1];
-  matrix[1][1] = qb->imag[1];
+  matrix[0][0] = qb->state[0].real;
+  matrix[0][1] = qb->state[0].imag;
+  matrix[1][0] = qb->state[1].real;
+  matrix[1][1] = qb->state[1].imag;
   return matrix;
 }
-
+/*
 MultiQubitState* tensorProduct(Qubit* qubits, int num_qubits) { // was too damn hard to implement this
   int size = (int)pow(2, num_qubits);  // 2^n total size of the vector
   MultiQubitState* result = create_multi_qubit_state(num_qubits); // FUNCTION NOT IMPLEMENTED! ERROR!
@@ -136,3 +133,4 @@ MultiQubitState* create_multi_qubit_state(int num_qubits) {
 
   return state;
 }
+*/

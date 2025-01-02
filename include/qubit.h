@@ -2,17 +2,17 @@
 #define QUBIT_H
 #include <stdbool.h>
 
+
+typedef struct{
+  double real;
+  double imag;
+}Complex;
+
 // qubit structure definition
 typedef struct Qubit {
-    double real[2];
-    double imag[2];
+    Complex state[2]; // state vector of the qubit
 } Qubit;
 
-typedef struct MultiQubitState {
-    int num_qubits;
-    double* real;          // real parts of the state vector e.g alpha1,alpha2...
-    double* imag;          // imaginary parts of the state vector e.g beta1,beta2...
-} MultiQubitState;
 
 
 
@@ -25,10 +25,10 @@ void normalize_qubit(Qubit* qb, int measurement); /* Say we measure the 1st qubi
                                                       the first qubit and then normalize the rest of the states*/
 bool validate_qubit(const Qubit* qb);
 double** qubit_to_matrix(Qubit* qb);
-
+/*
 MultiQubitState* initialize_multi_qubit_state(int num_qubits); // it should be used in entangled qubit states [-]
 MultiQubitState* tensor_product(Qubit* qubits, int num_qubits);
 MultiQubitState* create_multi_qubit_state(int num_qubits);
 void free_multi_qubit_state(MultiQubitState* state);
-void print_multi_qubit_state(const MultiQubitState* state);
+void print_multi_qubit_state(const MultiQubitState* state);*/
 #endif

@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <time.h>
-#include "qubit.h"
+#include "../../include/qubit.h"
 double generate_random_number() {
     return (double)rand() / (double)RAND_MAX;
 }
