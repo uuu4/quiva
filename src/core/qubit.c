@@ -30,14 +30,14 @@ void normalize_qubit(Qubit* qb,int measurement) {
     printf("Qubit is already normalized.\n");
     return;
   }
-    qb->real[0] = qb->real[0]/magnitude;
-    qb->real[1] = qb->real[1]/magnitude;
-    qb->imag[0] = qb->imag[0]/magnitude;
-    qb->imag[1] = qb->imag[1]/magnitude;
+    qb->state[0].real = qb->state[0].real/magnitude;
+    qb->state[1].real = qb->state[1].real/magnitude;
+    qb->state[0].imag = qb->state[0].imag/magnitude;
+    qb->state[1].imag = qb->state[1].imag/magnitude;
 }
 
 bool validate_qubit(const Qubit* qb) {
-  double result0 = pow(qb->real[0], 2) + pow(qb->imag[0], 2);
+  double result0 = pow(qb->real[0], 2) + pow(qb->state[0].imag, 2);
   double result1 = pow(qb->real[1], 2) + pow(qb->imag[1], 2);
   double epsilon = 1e-9; // Tolerance for floating-point comparison
 
