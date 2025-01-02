@@ -160,22 +160,22 @@ Qubit* apply_rotation_gate(Qubit* qb, char axis, double theta) { // need to upda
     // Rz = [e^(-i*theta/2), 0; 0, e^(i*theta/2)]
     switch (axis) {
         case 'x':
-        result_qb->real[0] = qb->real[0] * cos(theta / 2) + qb->imag[1] * sin(theta / 2);
-        result_qb->imag[0] = qb->imag[0] * cos(theta / 2) - qb->real[1] * sin(theta / 2);
-        result_qb->real[1] = qb->real[1] * cos(theta / 2) + qb->imag[0] * sin(theta / 2);
-        result_qb->imag[1] = qb->imag[1] * cos(theta / 2) - qb->real[0] * sin(theta / 2);
+        result_qb->state[0].real = qb->state[0].real * cos(theta / 2) + qb->state[1].imag * sin(theta / 2);
+        result_qb->state[0].imag = qb->state[0].imag * cos(theta / 2) - qb->state[1].real * sin(theta / 2);
+        result_qb->state[1].real = qb->state[1].real * cos(theta / 2) + qb->state[0].imag * sin(theta / 2);
+        result_qb->state[1].imag = qb->state[1].imag * cos(theta / 2) - qb->state[1].real * sin(theta / 2);
         break;
         case 'y':
-        result_qb->real[0] = qb->real[0] * cos(theta / 2) - qb->real[1] * sin(theta / 2);
-        result_qb->imag[0] = qb->imag[0] * cos(theta / 2) - qb->imag[1] * sin(theta / 2);
-        result_qb->real[1] = qb->real[1] * cos(theta / 2) + qb->real[0] * sin(theta / 2);
-        result_qb->imag[1] = qb->imag[1] * cos(theta / 2) + qb->imag[0] * sin(theta / 2);
+        result_qb->state[0].real = qb->state[1].real * cos(theta / 2) - qb->state[1].real * sin(theta / 2);
+        result_qb->state[0].imag = qb->state[0].imag * cos(theta / 2) - qb->state[1].imag * sin(theta / 2);
+        result_qb->state[1].real = qb->state[1].real * cos(theta / 2) + qb->state[0].real * sin(theta / 2);
+        result_qb->state[1].imag = qb->state[1].imag * cos(theta / 2) + qb->state[0].imag * sin(theta / 2);
         break;
         case 'z':
-        result_qb->real[0] = qb->real[0] * cos(-1 * theta / 2) - qb->imag[0] * sin(-1 * theta / 2);
-        result_qb->imag[0] = qb->real[0] * sin(-1* theta / 2) + qb->imag[0] * cos(-1 * theta / 2);
-        result_qb->real[1] = qb->real[1] * cos(theta / 2) - qb->imag[1] * sin(theta / 2);
-        result_qb->imag[1] = qb->real[1] * sin(theta / 2) + qb->imag[1] * cos(theta / 2);
+        result_qb->state[0].real = qb->state[0].real * cos(-1 * theta / 2) - qb->state[0].imag * sin(-1 * theta / 2);
+        result_qb->state[0].imag = qb->state[0].real * sin(-1* theta / 2) + qb->state[0].imag * cos(-1 * theta / 2);
+        result_qb->state[1].real = qb->state[1].real * cos(theta / 2) - qb->state[1].imag * sin(theta / 2);
+        result_qb->state[1].imag = qb->state[1].real * sin(theta / 2) + qb->state[1].imag * cos(theta / 2);
         break;
         default:
           free(result_qb);
@@ -192,18 +192,18 @@ Qubit* apply_CNOT_gate(Qubit* qubits[], int control_index, int target_index, int
 
     if (!control || !target) return NULL;
 
-    if (control->real[1] == 1 && control->imag[1] == 0) {
+    if (control->state[1].real == 1 && control->state[1].imag == 0) {
         // flip the target qubit
-        if (target->real[0] == 1 && target->imag[0] == 0) { // target is in |0⟩
-            target->real[0] = 0;
-            target->imag[0] = 0;
-            target->real[1] = 1;
-            target->imag[1] = 0;
-        } else if (target->real[1] == 1 && target->imag[1] == 0) { // target is in |1⟩
-            target->real[0] = 1;
-            target->imag[0] = 0;
-            target->real[1] = 0;
-            target->imag[1] = 0;
+        if (target->state[0].real == 1 && target->state[0].imag == 0) { // target is in |0⟩
+            target->state[0].real = 0;
+            target->state[0].imag = 0;
+            target->state[1].real = 1;
+            target->state[1].imag = 0;
+        } else if (target->state[1].real == 1 && target->state[1].imag == 0) { // target is in |1⟩
+            target->state[0].real = 1;
+            target->state[0].imag = 0;
+            target->state[1].real = 0;
+            target->state[1].imag = 0;
         }
         return target;
     }
