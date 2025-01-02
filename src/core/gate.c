@@ -136,10 +136,10 @@ Qubit* apply_phase_gate(Qubit* qb, double theta) {
     if (!result_qb) return NULL;
 
     // P = [0 1; 0 e^i*theta] // might done matrix multiplication gotta check one more
-    result_qb->real[0] = qb->real[0];
-    result_qb->imag[0] = qb->imag[0];
-    result_qb->real[1] = (qb->real[1])*cos(theta)-(qb->imag[1])*sin(theta);
-    result_qb->imag[1] = (qb->real[1])*sin(theta)+(qb->imag[1])*cos(theta);
+    result_qb->state[0].real = qb->state[0].real;
+    result_qb->state[0].imag = qb->state[0].imag;
+    result_qb->state[1].real = (qb->state[1].real)*cos(theta)-(qb->state[1].imag)*sin(theta);
+    result_qb->state[1].imag = (qb->state[1].real)*sin(theta)+(qb->state[1].imag)*cos(theta);
 
     return result_qb;
 }
