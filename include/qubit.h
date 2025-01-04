@@ -13,10 +13,13 @@ typedef struct Qubit {
     Complex state[2]; // state vector of the qubit
 } Qubit;
 
-typedef struct MultiQubitState {
-    Qubit* qubits;
+typedef struct {
     int num_qubits;
+    int size;         //vector size
+    double* real;
+    double* imag;
 } MultiQubitState;
+
 
 
 
