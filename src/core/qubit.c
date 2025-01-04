@@ -58,7 +58,7 @@ double** qubit_to_matrix(Qubit* qb) {
   matrix[1][1] = qb->state[1].imag;
   return matrix;
 }
-/*
+
 MultiQubitState* tensorProduct(Qubit* qubits, int num_qubits) { // was too damn hard to implement this
   int size = (int)pow(2, num_qubits);  // 2^n total size of the vector
   MultiQubitState* result = create_multi_qubit_state(num_qubits); // FUNCTION NOT IMPLEMENTED! ERROR!
@@ -133,4 +133,3 @@ MultiQubitState* create_multi_qubit_state(int num_qubits) {
 
   return state;
 }
-*/
