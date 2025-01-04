@@ -36,6 +36,16 @@ void normalize_qubit(Qubit* qb,int measurement) {
     qb->state[1].imag = qb->state[1].imag/magnitude;
 }
 
+
+
+
+
+
+
+
+
+
+
 bool validate_qubit(const Qubit* qb) {
   double result0 = pow(qb->state[0].real, 2) + pow(qb->state[0].imag, 2);
   double result1 = pow(qb->state[1].real, 2) + pow(qb->state[1].imag, 2);
@@ -58,6 +68,16 @@ double** qubit_to_matrix(Qubit* qb) {
   matrix[1][1] = qb->state[1].imag;
   return matrix;
 }
+
+
+
+
+
+
+
+
+
+
 
 MultiQubitState* tensorProduct(Qubit* qubits, int num_qubits) { // was too damn hard to implement this
   int size = (int)pow(2, num_qubits);  // 2^n total size of the vector
@@ -120,7 +140,7 @@ MultiQubitState* create_multi_qubit_state(int num_qubits) {
 
   state->num_qubits = num_qubits;
 
-  int size = (int)pow(2, num_qubits);
+  int size = 1 << num_qubits; // 2^n
 
   state->real = (double*)calloc(size, sizeof(double));
   state->imag = (double*)calloc(size, sizeof(double));
@@ -133,3 +153,18 @@ MultiQubitState* create_multi_qubit_state(int num_qubits) {
 
   return state;
 }
+
+void initialize_multi_qubit_state(MultiQubitState* state, int basis_state) {
+  if (basis_state < 0 || basis_state >= state->size) {
+    fprintf(stderr, "Invalid basis state\n");
+    return;
+  }
+
+  for (int i = 0; i < state->size; i++) {
+    state->real[i] = 0.0;
+    state->imag[i] = 0.0;
+  }
+
+  state->real[basis_state] = 1.0;
+}
+
