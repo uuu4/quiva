@@ -1,7 +1,5 @@
 # TODO
 
-## Rewritten Version
-
 1. **`apply_rotation_gate()` in `gate.c`**  
    Currently, this function only supports rotations around the X, Y, and Z axes. We need to extend it so it can handle rotations about any arbitrary axis specified by the user.
 
