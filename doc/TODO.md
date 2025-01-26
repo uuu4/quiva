@@ -1,84 +1,97 @@
-***0.1: in gate.c , need to update apply_rotation_gate for arbitrary inputs, it currently working on only x y and z axis***
-
-***0.2: in gate.c APPLY_CNOT_GATE FUNCTION needed to be more general. Right now it only used in 0 and 1 target states.***
-
-
-
-***0.3: in qubit.c CREATE_MULTIQUBIT_STATE FUNCTION, need to update the function to create a qubit with a given state***
 # TODO
+
+## Rewritten Version
+
+1. **`apply_rotation_gate()` in `gate.c`**  
+   Currently, this function only supports rotations around the X, Y, and Z axes. We need to extend it so it can handle rotations about any arbitrary axis specified by the user.
+
+2. **`apply_cnot_gate()` in `gate.c`**  
+   The current implementation is limited to using qubit 0 as the control and qubit 1 as the target. We should generalize this function to allow any valid pair of control and target qubits.
+
+3. **`create_multiqubit_state()` in `qubit.c`**  
+   We must update this function to enable creating a multi-qubit state from a user-defined initial state, rather than only supporting default or hardcoded states.
+
+---
 
 ## 1. Features to Implement
 
 ### Core Features
 - [ ] **Gate Implementations**
-    - Single-Qubit Gates:
+    - **Single-Qubit Gates**:
         - [x] Pauli Gates (X, Y, Z)
         - [x] Phase Gates (S, T, custom phase gate with θ parameter)
         - [x] Hadamard Gate (H)
-    - Multi-Qubit Gates:
+    - **Multi-Qubit Gates**:
         - [ ] Controlled Gates (CNOT, Toffoli, etc.)
         - [ ] SWAP Gate
         - [ ] Controlled Phase Gates (CRZ, CRY, CRX, CU1, CU2, CU3)
         - [ ] Multi-Control Gates (e.g., Multi-controlled Toffoli)
-    - Universal Gates:
+    - **Universal Gates**:
         - [ ] Arbitrary unitary matrices as gates (user-defined).
-    - Noise Models:
+    - **Noise Models**:
         - [ ] Depolarizing channel.
         - [ ] Amplitude and phase damping.
 
 - [ ] **Quantum Measurement**
     - Implement measurement for \( n \)-qubit systems:
         - Collapse states probabilistically.
-        - Return measurement results in binary format (e.g., |01⟩, |11⟩).
+        - Return measurement results in binary format (e.g., \(|01\rangle\), \(|11\rangle\)).
     - Add repeated measurement functionality to simulate experiment outcomes.
 
 - [ ] **Tensor Product**
     - Add functionality for computing tensor products of arbitrary numbers of qubits.
     - Optimize for \( n \)-qubit systems by using sparse representations where possible.
+
 - [ ] **State Initialization**
     - Provide user-friendly API to initialize quantum states:
         - [ ] Single-qubit states.
-        - [ ] Multi-qubit states (e.g., |00⟩, |ψ+⟩).
+        - [ ] Multi-qubit states (e.g., \(|00\rangle\), \(|\psi^+\rangle\)).
         - [ ] Randomized pure or mixed states.
+
 - [ ] **Simulation Backend**
     - Enable step-by-step simulation of quantum circuits:
         - Apply gates sequentially.
         - Visualize intermediate states.
     - Add support for time evolution of quantum systems.
+
 ---
 
-## 2. **API Design**
+## 2. API Design
 
 ### High-Level API
-- [ ] **Object-Oriented Quantum Circuit Interface**
+
+- **Object-Oriented Quantum Circuit Interface**
     - Create a `QuantumCircuit` class to represent circuits.
         - Methods to:
             - Add gates (`add_gate()` or `apply_gate()`).
             - Add measurements (`measure()`).
             - Visualize circuit structure (`show_circuit()`).
         - Support serialization (e.g., export to JSON or OpenQASM).
-    - Example usage:
+
+    - **Example usage**:
       ```c
       QuantumCircuit* qc = create_circuit(2);  // Create a 2-qubit circuit
       add_gate(qc, HADAMARD, 0);              // Apply H gate to qubit 0
       add_gate(qc, CNOT, 0, 1);               // Apply CNOT gate
       measure(qc, 1);                         // Measure qubit 1
       ```
+
 ### Low-Level API
-- [ ] Provide access to:
+- Provide access to:
     - Tensor product functionality for manual multi-qubit state construction.
     - Direct gate application to raw `Qubit` structures.
 
 ### Visualization and Interaction
-- [ ] Add visualization for:
+- Add visualization for:
     - Quantum states (as vectors or Bloch spheres).
     - Circuit diagrams (ASCII art or graphical).
-- [ ] Allow live interaction:
+- Allow live interaction:
     - Users can create and modify circuits via a scripting interface.
 
 ---
 
 ## 3. Optimization Tasks
+
 - [ ] Optimize tensor product calculations for large systems.
 - [ ] Refactor memory allocation in gate application functions.
 - [ ] Introduce caching for frequently-used operations (e.g., repeated gates or tensor products).
@@ -87,6 +100,7 @@
 ---
 
 ## 4. Testing
+
 - [ ] Write unit tests for:
     - Gate functions (single and multi-qubit).
     - Tensor product functionality for correctness.
@@ -101,6 +115,7 @@
 ---
 
 ## 5. Documentation
+
 - [ ] Update **README.md**:
     - Add project overview and key features.
     - Provide installation and usage instructions.
@@ -119,6 +134,7 @@
 ---
 
 ## 6. Advanced Features to Add
+
 - [ ] **Custom Gates**
     - Allow users to define their own unitary matrices as gates.
     - Validate custom gates for unitarity.
@@ -132,10 +148,11 @@
 ---
 
 ## 7. Visualization
-- [ ] Circuit Diagram Generator
+
+- [ ] **Circuit Diagram Generator**
     - Create ASCII or graphical circuit diagrams.
     - Include gate names, qubits, and measurements.
-- [ ] State Representation
+- [ ] **State Representation**
     - Add visualizations for:
         - Probability amplitudes of states.
         - Bloch sphere for single-qubit states.
